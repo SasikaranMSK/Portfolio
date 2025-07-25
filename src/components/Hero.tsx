@@ -17,7 +17,7 @@ const Hero = () => {
                   onError={(e) => {
                     // Fallback to a placeholder if image doesn't exist
                     const target = e.target as HTMLImageElement;
-                    target.src = "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop";
+                    target.src = "https://github.com/SasikaranMSK/Portfolio/blob/main/sasikaran-photo.JPG";
                   }}
                 />
               </div>
