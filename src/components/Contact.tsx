@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Award } from 'lucide-react';
 
 const Contact = () => {
@@ -11,8 +12,24 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+
+    emailjs.send(
+      'service_iq8whfj',        //  Service ID
+      'template_cp964ix',       // Template ID
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      'jiQOtN-oVCGK_db-1'         //  Public Key
+    ).then(() => {
+      alert("Message sent successfully!");
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }).catch((error) => {
+      console.error('EmailJS error:', error);
+      alert("Failed to send message. Try again later.");
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
